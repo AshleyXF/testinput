@@ -37,7 +37,7 @@ and open the template in the editor.
             <input type="number" />
             <input type="time" />
             <input type="datetime"/><!-- marche pas -->
-            <input type=""
+            <input type=""/>
         </form>
     </body>
 </html>

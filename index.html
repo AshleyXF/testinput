@@ -181,7 +181,7 @@ and open the template in the editor.
             
             <!-- Page maison -->
             <div id="maison" class="page">
-                <label for="maison">Type de maison?</label>
+                <label>Type de maison?</label>
                 <div ng-controller="ButtonsCtrl" class="btn-group-vertical btn-block custompadding1 verticalspace1">
                     <button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'individuelle'">Individuelle</button>
                     <button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'isolee'">Isolée</button>
@@ -233,7 +233,7 @@ and open the template in the editor.
                 <div ng-controller="DatepickerCtrl" class="date">
                     <label>Date de l'évenement:</label>
                     <div style="display:inline-block; min-height:290px;">
-                      <datepicker show-weeks="false" ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+                      <datepicker show-weeks="false" ng-model="dt" min-date="minDate" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
                     </div>
                 </div>
                 
