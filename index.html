@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Test Angular bootstrap</title>
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <!--<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />-->
+        
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-locale_fr-fr.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+        
+        <script src="js/config.js"></script>
+        
+        <script>       
+            function checkpage(){
+                var hash = window.location.hash;
+                if (hash === ''){
+                    document.querySelector('#home.page').style.display = "block";
+                    window.location.hash = '#home';
+                }else{
+                    document.querySelector(hash + '.page').style.display = "block";
+                }
+            }    
+
+            function changepage(page) {
+                var hash = window.location.hash;
+                document.querySelector(hash).style.display = "none";
+                document.querySelector(page + '.page').style.display = "block";
+                //document.getElementById(page).style.display = "block";  
+            }
+</script>
+                
+        
+    </head>
+    <body ng-app="app" ng-init="myStyle={'display' : 'block'}" onload="checkpage()">
+
+        <!--Header -->
+        <header>
+            <a href="#home" onclick="changepage('#home')">Sentinelle</a>
+        </header>
+        
+        <!-- Contenu de la page -->
+        <div class="container" >
+            <form role="form">    
+                
+            <!-- Page d'accueil -->
+            <div id="home" class="page">
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#categorieidentite" onclick="changepage('#categorieidentite')">Identité</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#categorieevenement" onclick="changepage('#categorieevenement')">Evenement</a></div>
+                </div>
+                <div class="row custompadding">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#consequence" onclick="changepage('#consequence')">Conséquence</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#pronostique" onclick="changepage('#pronostique')">Pronostique</a></div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            <!-- Categorie de la page identité -->
+            <div id="categorieidentite" class="page">
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#identite" onclick="changepage('#identite')">Information</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#habitat" onclick="changepage('#habitat')">Habitat</a></div>
+                </div>
+                <div class="row custompadding">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#envfamilial" onclick="changepage('#envfamilial')">Environnement<br /> familial</a></div>
+                </div>
+                
+               
+                <a href="#home" onclick="changepage('#home')" class="btn btn-primary round back btn-block btn-lg"><span><</span></a>
+            </div>
+            
+
+            <!-- Page identiter de la personne -->
+            <div id="identite" class="page">
+                <!--Sexe-->
+                <div ng-controller="ButtonsCtrl">
+                    <label>Sexe:</label>
+                    <div class="row verticalspace1">
+                        <div class="col-xs-6"><button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'Homme'">Homme</button></div>
+                        <div class="col-xs-6"><button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'Femme'">Femme</button></div>
+                    </div>
+                </div>
+                
+                <!-- Age -->
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input class="form-control noborderradius" id="age" type="number">                           
+                </div>
+
+                <!-- Departement -->
+                <label for="departement">Departement:</label>
+                <select class="form-control noborderradius verticalspace1" id="departement">
+                    <option value='' disabled selected style='display:none;' >Choisir</option>
+                    <option>departement1</option>
+                    <option>departement2</option>
+                    <option>departement3</option>
+                    <option>departement4</option>
+                </select>
+
+                <!-- Lieu de vie -->
+                <label>Lieu de vie:</label>
+                <div class="row">
+                    <div class="btn-group-justified custompadding1 verticalspace1" ng-controller="ButtonsCtrl">
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'Rural'">Rural</label>
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'Semi-rural'">Semi-rural</label>
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'Urbain'">Urbain</label>
+                    </div>
+                </div> 
+
+                <!-- Situation personelle -->
+                <label for="situperso">Situation personnelle:</label>
+                <select class="form-control noborderradius verticalspace1" id="situperso">
+                    <option value='' disabled selected style='display:none;' >Choisir</option>
+                    <option>Célibataire</option>
+                    <option>Marié</option>
+                    <option>Divorcé</option>
+                    <option>Veuf</option>
+                    <option>Autre</option>
+                </select>
+
+                <!-- changement de situatution personnelle récente -->
+                <label>Changement de situation personnelle récente:</label>
+                <input type="text" class="form-control noborderradius verticalspace1"/>
+
+                <!-- date de celle ci -->
+                <div ng-controller="DatepickerCtrl" class="date">
+                    <label>Quand</label>
+                    <div style="display:inline-block; min-height:290px;">
+                      <datepicker show-weeks="false" ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+                    </div>
+                </div>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#categorieidentite" onclick="changepage('#categorieidentite')">Valider</a>
+
+            </div>
+
+            <!-- Page Habitat -->
+            <div id="habitat" class="page">
+                <label>Type:</label>
+                <div class="btn-group-vertical btn-block custompadding1 verticalspace1" ng-controller="ButtonsCtrl">
+                    <a role="button" class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" href="#appartement" onclick="changepage('#appartement')" ng-model="radioModel" btn-radio="'Appartement'">Appartement</a>
+                    <a role="button" class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" href="#maison" onclick="changepage('#maison')" ng-model="radioModel" btn-radio="'Maison'">Maison</a>
+                    <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'Foyer résidence'">Foyer résidence</label>
+                </div>
+                
+                <label>Escalier:</label>
+                <div ng-controller="ButtonsCtrl" class="btn-group-vertical btn-block custompadding1 verticalspace1">
+                    <button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'escalierjardin'" uncheckable>Escalier jardin</button>
+                    <button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'escalierinterieur'" uncheckable>Escalier intérieur</button>
+                </div>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#categorieidentite" onclick="changepage('#categorieidentite')">Valider</a>
+            </div>
+            
+            
+            
+            <!-- Page appartement -->
+            <div id="appartement" class="page">
+                <label for="etage">A quel étage ?</label>
+                <input class="form-control noborderradius verticalspace1" id="etage" type="number">
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#habitat" onclick="changepage('#habitat')">Valider</a>
+            </div>
+            
+            
+            <!-- Page maison -->
+            <div id="maison" class="page">
+                <label for="maison">Type de maison?</label>
+                <div ng-controller="ButtonsCtrl" class="btn-group-vertical btn-block custompadding1 verticalspace1">
+                    <button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'individuelle'">Individuelle</button>
+                    <button class="btn btn-primary btn-block btn-lg sharp" ng-model="radioModel" btn-radio="'isolee'">Isolée</button>
+                </div>
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#habitat" onclick="changepage('#habitat')">Valider</a>
+            </div>
+            
+            
+            <!-- Page Environement Familial -->
+            <!-- /!\ A Faire les page de redirection et ne pas rediriger si la case est deja cocher mais decocher la case -->
+            <div id="envfamilial" class="page">
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><button role="button" class="btn btn-primary btn-block btn-lg sharp" btn-checkbox ng-model="checkModel.vitseul" >Vit seul</button></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.conjoint">Conjoint</a></div>
+                </div>
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.enfants">Enfants</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.petitsenfants">Petits Enfants</a></div>
+                </div>
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.fratrie">Fratrie</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.neveu">Neveu</a></div>
+                </div>
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.natureinterventions">Nature des <br/> interventions</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#" onclick="changepage('#')" btn-checkbox ng-model="checkModel.frequence">Fréquence</a></div>
+                </div>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#categorieidentite" onclick="changepage('#categorieidentite')">Valider</a>
+            </div>
+            
+            
+            
+            
+            
+            <!-- Categorie evenement-->
+            <div id="categorieevenement" class="page">
+                <div class="row custompadding verticalspace0">
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#circonstance" onclick="changepage('#circonstance')">Circonstance</a></div>
+                    <div class="col-xs-6"><a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#cause" onclick="changepage('#cause')">Cause</a></div>
+                </div>
+                              
+                <a href="#home" onclick="changepage('#home')" class="btn btn-primary round back btn-block btn-lg"><span><</span></a>
+            </div>
+            
+            <!-- Page circonstance -->
+            <div id="circonstance" class="page">
+                <!-- date -->
+                <div ng-controller="DatepickerCtrl" class="date">
+                    <label>Date de l'évenement:</label>
+                    <div style="display:inline-block; min-height:290px;">
+                      <datepicker show-weeks="false" ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+                    </div>
+                </div>
+                
+                <div ng-controller="TimepickerCtrl" class="time verticalspace1">
+                  <label>Heure de découverte:</label>
+                  <timepicker ng-model="mytime" ng-change="changed()" hour-step="1" minute-step="10" show-meridian="false"></timepicker>
+                </div>
+                
+                <div ng-controller="TimepickerCtrl" class="time verticalspace1">
+                  <label>Heure d'estimation de l'évenement:</label>
+                  <timepicker ng-model="mytime" ng-change="changed()" hour-step="1" minute-step="10" show-meridian="false"></timepicker>
+                </div>
+                
+                <label>Reccurent:</label>
+                <div class="row">
+                    <div class="btn-group-justified custompadding1 verticalspace1" ng-controller="ButtonsCtrl">
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'oui'">Oui</label>
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'non'">Non</label>
+                    </div>
+                </div> 
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#categorieevenement" onclick="changepage('#categorieevenement')">Valider</a>
+                
+            </div>
+           
+            <!-- page cause -->
+            <div id="cause" class="page">
+                <div class="btn-group-vertical btn-block custompadding1 verticalspace1">
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.physique" btn-checkbox>Physique</label>
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.psychologique" btn-checkbox>Psychologique</label>
+                    <a class="btn btn-primary btn-lg sharp" ng-model="checkModel.iatrogene" btn-checkbox href="#iatrogene" onclick="changepage('#iatrogene')">Iatrogène</a>
+                    <a class="btn btn-primary btn-lg sharp" ng-model="checkModel.additive" btn-checkbox href="#additive" onclick="changepage('#additive')">Additive</a>
+                </div>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#home" onclick="changepage('#home')">Valider</a>
+            </div>
+            
+            <!-- categorie iatrogene -->
+            <div id="iatrogene" class="page">
+                <label>Surdosage médicamenteux:</label>
+                <input type="text" class="verticalspace1 form-control" />
+                
+                <label>Traitement:</label>
+                <div class="btn-group-justified custompadding1 verticalspace1" ng-controller="ButtonsCtrl">
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'nouveau'">Nouveau</label>
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'introduction'">Introduction</label>
+                        <label class="btn btn-primary sharp btn-lg col-xs-4 custompadding2" ng-model="radioModel" btn-radio="'arret'">Arret</label>
+                </div>
+                
+                <label>Effets secondaires de médications:</label>
+                <select class="form-control verticalspace1">
+                    <option value='' disabled selected style='display:none;' >Choisir</option>
+                    <option>Corticothérapie</option>
+                    <option>Chimiothérapie</option>
+                    <option>Radiothérapie</option>
+                    <option>Antibiotiques</option>
+                    <option>Morphinothérapie</option>
+                    <option>Neuroleptiques</option>
+                    <option>Benzodiazépine</option>
+                    <option>Multiplicité médicamenteuse</option>
+                    <option>Autre</option>
+                </select>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#cause" onclick="changepage('#cause')">Valider</a>
+                
+            </div>
+            
+            
+            <!-- categorie additive -->
+            <div id="additive" class="page">
+                <div class="btn-group-vertical btn-block custompadding1 verticalspace1">
+                    <a class="btn btn-primary btn-lg sharp" ng-model="checkModel.alcool" btn-checkbox href="#alcool" onclick="changepage('#alcool')">Alcool</a>
+                    <a class="btn btn-primary btn-lg sharp" ng-model="checkModel.drogue" btn-checkbox href="#drogue" onclick="changepage('#drogue')">Drogue</a>
+                    <a class="btn btn-primary btn-lg sharp" ng-model="checkModel.medicament" btn-checkbox href="#medicament" onclick="changepage('#medicament')">Médicament</a>
+                    <a class="btn btn-primary btn-lg sharp" ng-model="checkModel.autreadditive" btn-checkbox href="#autreadditive" onclick="changepage('#autreadditive')">Autre</a>
+                </div>
+            </div>
+            
+            <div id="alcool" class="page">
+                
+            </div>
+            
+            <div id="drogue" class="page">
+                
+            </div>
+            
+            <div id="medicament" class="page">
+                
+            </div>
+            
+            <div id="autreadditive" class="page">
+                
+            </div>
+            
+            
+            
+            
+            <!-- Page consequence -->
+            <div id="consequence" class="page">
+                <div class="btn-group-vertical btn-block custompadding1 verticalspace1">
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.infirmier" btn-checkbox>Traité par l'infirmier</label>
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.medical" btn-checkbox>Déclenchement consult <br/>CS médical</label>
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.hospitalisation" btn-checkbox>Hospitalisation</label>
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.deces" btn-checkbox>Déces</label>
+                </div>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#home" onclick="changepage('#home')">Valider</a>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            <!-- Page pronostique -->
+            <div id="pronostique" class="page">
+                <div class="btn-group-vertical btn-block custompadding1 verticalspace1">
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.placement" btn-checkbox>Placement</label>
+                    <label class="btn btn-primary btn-lg sharp" ng-model="checkModel.social" btn-checkbox>Plan d'aide social</label>
+                </div>
+                
+                <a role="button" class="btn btn-primary btn-block btn-lg sharp" href="#home" onclick="changepage('#home')">Valider</a>
+            </div>
+            
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <img src="images/logo.png" alt="logo" />
+        </footer>
+    </body>
+</html>

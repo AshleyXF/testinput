@@ -1,0 +1,145 @@
+/*------- 'Page' ---------------------------------------------------------------*/
+.page{
+    display: none;
+    padding: 50px 0;
+}
+
+
+/*--------- Header & Footer -------------------------------------------------------------------------*/
+header, footer{
+    background-color: #0D95D2;
+    color: white;
+    font-style: italic;
+    font-size: 1.5em;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+}
+
+header{
+    top:0;
+}
+
+header a, header a:hover, header a:focus{
+    color: white;
+    text-decoration: none;
+}
+
+footer{
+    bottom: 0;
+    text-align: center;
+}
+
+footer img{
+    height: 30px;
+}
+
+
+
+/*-------Bouton carre------------------------------------------------------*/
+.btn.sharp {
+  border-radius:0;
+}
+
+.btn.nopadding {
+    padding: 0;
+}
+
+.btn img {
+    width: 100%;
+}
+
+/*------- bouton back -----------------------------------------------*/
+.btn.round{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 3em;
+}
+
+.btn.round span{
+    padding-bottom: 5px;
+    position: absolute;
+    top: -4px;
+    left: 10px;
+}
+
+.back{
+    position: fixed;
+    bottom: 50px;
+    left: 5px;
+}
+
+
+
+/*-------- Space -----------------------------------------------------------------*/
+.verticalspace1{
+    margin-bottom: 20px;
+}
+
+.verticalspace0{
+    margin-bottom: 5px;
+}
+
+.custompadding > [class*='col-'], .custompadding2 {
+    padding-right:5px;
+    padding-left:5px;
+}
+
+.custompadding1{
+    padding-right:15px;
+    padding-left:15px;
+}
+
+
+/*-------- Custom button --------------------------------------------------------------------------*/
+.btn-primary, .btn-primary:focus{
+    background-color: #0D95D2;
+    border-color: inactiveborder;
+}
+
+.btn-primary:hover{
+    background-color: #137bd2;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary.active, .btn-primary.active:hover, .btn-primary:focus{
+    border-color: inactiveborder;
+}
+
+
+
+/*----------No border radius--------------------------------------------------------------------*/
+.noborderradius{
+    border-radius: 0;
+}
+
+
+
+/*----------- style des inputs d'heure ----------------------------------------------------------------------------*/
+.time input{
+    width: 70% !important;
+    margin: 0px auto; 
+    height: 50px;
+    font-size: 2em;
+}
+
+.time table{
+    margin: 0 auto;
+}
+
+
+/*-------------- style des calendrier de selection de date -----------------------------------------------------------------------*/
+.date table, .date .well, .date div:first-of-type{
+    width: 100%;
+}
+
+
+
+
+
+
+/*#a1.page{
+    display: block;
+}*/
